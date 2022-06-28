@@ -1,5 +1,17 @@
-image: golang:1.17
+variables:
+  IMAGE_NAME: monamp10/user-management
+  IMAGE_TAG: 1.0
+
+
 run_test:
+  image: golang:1.17
   script:
     - go test -v
     - go build main.go
+
+
+
+build_image:
+  script:
+    - docker build -t $IMAGE_NAME:$IMAGE_TAG .
+    -docker push $IMAGE_NAME:$IMAGE_TAG
