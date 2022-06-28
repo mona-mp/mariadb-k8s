@@ -1,0 +1,4 @@
+run_test:
+  image: golang:1.17
+  scripts:
+    - go build main.go
