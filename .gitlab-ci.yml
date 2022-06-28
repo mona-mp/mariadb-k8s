@@ -2,4 +2,4 @@ image: golang:1.17
 run_test:
   script:
     - go test -v
-    - go buil main.go
+    - go build main.go
