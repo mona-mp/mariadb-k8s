@@ -1,4 +1,4 @@
 image: golang:1.17
 run_test:
-  scripts:
+  script:
     - go test -v
