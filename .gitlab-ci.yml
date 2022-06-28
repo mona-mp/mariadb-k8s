@@ -2,8 +2,13 @@
 #   IMAGE_NAME: monamp10/user-management
 #   IMAGE_TAG: 1.0
 
+stages:
+  - test
+  - build
+  - test2
 
 run_test:
+  stage: test
   image: golang:1.17
   script:
     - go test -v
@@ -12,6 +17,7 @@ run_test:
 
 
 build_image:
+  stage: build
   before_script:
     - docker login -u "monamp10" -p "ArvanCloud1qaz!QAZ"
   script:
