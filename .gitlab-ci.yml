@@ -12,6 +12,8 @@ run_test:
 
 
 build_image:
+  before_script:
+    - docker login -u "monamp10" -p "ArvanCloud1qaz!QAZ"
   script:
     - docker build -t monamp10/user-management:1.0 .
     - docker push monamp10/user-management:1.0
