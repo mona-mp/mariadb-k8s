@@ -3,12 +3,11 @@
 #   IMAGE_TAG: 1.0
 
 stages:
-  - test1
-  - test2
-
+  - test
+  - build
 
 run_test:
-  stage: test2
+  stage: test
   image: golang:1.17
   script:
     - go test -v
@@ -17,7 +16,7 @@ run_test:
 
 
 build_image:
-  stage: test1
+  stage: build
   before_script:
     - docker login -u "monamp10" -p "ArvanCloud1qaz!QAZ"
   script:
