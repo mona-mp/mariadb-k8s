@@ -28,6 +28,7 @@ deploy:
   stage: deploy
   before_script:
     - chmod 400 $SSH_KEY
+    - sudo chmod 666 /var/run/docker.sock
   script:
     - ssh -o StrictHostKeyChecking=no -i $SSH_KEY ubuntu@188.121.109.78 "
         docker login -u "monamp10" -p "ArvanCloud1qaz!QAZ" &&
