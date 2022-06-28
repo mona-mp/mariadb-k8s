@@ -1,6 +1,6 @@
-variables:
-  IMAGE_NAME: monamp10/user-management
-  IMAGE_TAG: 1.0
+# variables:
+#   IMAGE_NAME: monamp10/user-management
+#   IMAGE_TAG: 1.0
 
 
 run_test:
@@ -13,5 +13,5 @@ run_test:
 
 build_image:
   script:
-    - docker build -t $IMAGE_NAME:$IMAGE_TAG .
-    - docker push $IMAGE_NAME:$IMAGE_TAG
+    - docker build -t monamp10/user-management:1.0 .
+    - docker push monamp10/user-management:1.0
