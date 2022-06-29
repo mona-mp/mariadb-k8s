@@ -1,6 +1,4 @@
-# variables:
-#   IMAGE_NAME: monamp10/user-management
-#   IMAGE_TAG: 1.0
+
 
 stages:
   - test
