@@ -7,11 +7,11 @@ And at the end, I configure GitLab CI/CD for it.
 This application stores new users and their phone numbers.
 
 **controllers**\
-I have defined four handlers :
-1- GetAllUsers: retrieve the records of all the users
-2- DeletUserByID: delete specific user by ID
-3- CreateUser: create a new user
-4- UpdateUserByID: update a users’s record information
+I have defined four handlers : \
+1- GetAllUsers: retrieve the records of all the users \
+2- DeletUserByID: delete specific user by ID \
+3- CreateUser: create a new user \
+4- UpdateUserByID: update a users’s record information \
 
 I use the [gorilla/mux](https://www.gorillatoolkit.org/pkg/mux) package to implement a request router and dispatcher for matching incoming requests to their respective handler.
 
