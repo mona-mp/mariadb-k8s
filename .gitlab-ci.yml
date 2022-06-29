@@ -33,4 +33,4 @@ deploy:
     - ssh -o StrictHostKeyChecking=no -i $SSH_KEY ubuntu@188.121.109.78 "
         docker login -u "monamp10" -p "ArvanCloud1qaz!QAZ" &&
         docker rm -f usermanagement &&
-        docker run -d -p 18080:18080 --name usermanagement monamp10/user-management:1.0"
+        sudo docker run -d -p 18080:18080 --name usermanagement monamp10/user-management:1.0"
