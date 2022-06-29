@@ -6,7 +6,7 @@ And at the end, I configure GitLab CI/CD for it.
 
 This application stores new users and their phone numbers.
 
-**controllers**
+**controllers**\
 I have defined four handlers :
 1- GetAllUsers: retrieve the records of all the users
 2- DeletUserByID: delete specific user by ID
