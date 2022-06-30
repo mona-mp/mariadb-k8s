@@ -7,11 +7,11 @@ And at the end, I configure GitLab CI/CD for it.
 This application stores new users and their phone numbers.
 
 **controllers**\
-I have defined four handlers : \
-1- GetAllUsers: retrieve the records of all the users \
-2- DeletUserByID: delete specific user by ID \
-3- CreateUser: create a new user \
-4- UpdateUserByID: update a users’s record information
+In usercontroller.go, I have defined four handlers : \
+&ensp;1- GetAllUsers: retrieve the records of all the users \
+&ensp;2- DeletUserByID: delete specific user by ID \
+&ensp;3- CreateUser: create a new user \
+&ensp;4- UpdateUserByID: update a users’s record information
 
 I use the [gorilla/mux](https://www.gorillatoolkit.org/pkg/mux) package to implement a request router and dispatcher for matching incoming requests to their respective handler.
 
@@ -36,3 +36,8 @@ For connecting this app to the database, there are two files:\
 In this folder is a user.go file which contains and User object for REST(CRUD).
 
 **main**\
+In main file three functions are defined:
+- initDb: it loads .env file to get database config and after that called all functions which are used to connect ro database and create table
+- initaliseHandlers: in this function we have four routes which are maped to their related handler.
+- main: called initDb and initaliseHandlers functions and create router.
+
