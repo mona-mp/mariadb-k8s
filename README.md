@@ -1,6 +1,6 @@
 # User management RESTful API
 <p align="center">
-    <img src="usermanagement-diagram.png" alt="Sublime's custom image"/>
+    <img src="usermanagement-diagram.png">
     </p>
 I created a simple RESTful API  in Go for user-management which runs on 18080 port in this project. I connected this application to the MariaDB cluster, which sat up in [this](https://github.com/mona-mp/mariadb-cluster) link.
 I make a docker image for it and push it to docker hub.
