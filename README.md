@@ -1,5 +1,4 @@
 # User management RESTful API
-![diagram](usermanagement-diagram.png)
 <p align="center">
     <img src="usermanagement-diagram.png"/>
     </p>
