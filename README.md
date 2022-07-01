@@ -44,7 +44,7 @@ In main file three functions are defined:
 - main: called initDb and initaliseHandlers functions and create router.
 
 # Preparing GitLab CI/CD
-&ensp;This [link](https://www.youtube.com/watch?v=qP8kir2GUgo) helps to learn CI/CD basics.
+&ensp;This [link](https://www.youtube.com/watch?v=qP8kir2GUgo) helps to learn CI/CD basics.\
 &ensp;I just write some bash scripts, define all the automated tasks in a .gitlab-ci.yml file in the root of the repo, and with a few more small configuration steps.Three stages are defined in the CI/CD :
 - test: it is an simple automated testing of the Golang code.
 - build: just build the docker image and push it to dockerhub.
