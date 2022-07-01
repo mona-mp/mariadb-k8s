@@ -1,7 +1,7 @@
 # User management RESTful API
 
-I created a simple RESTful API  in Go for user-management in this project. I connected this application to the MariaDB cluster, which sat up in [this](https://github.com/mona-mp/mariadb-cluster) link.
-I make a docker image for it and push it to my docker hub account.
+I created a simple RESTful API  in Go for user-management which runs on 18080 port in this project. I connected this application to the MariaDB cluster, which sat up in [this](https://github.com/mona-mp/mariadb-cluster) link.
+I make a docker image for it and push it to docker hub.
 And at the end, I configure GitLab CI/CD for it.
 
 This application stores new users and their phone numbers.
@@ -40,4 +40,10 @@ In main file three functions are defined:
 - initDb: it loads .env file to get database config and after that called all functions which are used to connect ro database and create table
 - initaliseHandlers: in this function we have four routes which are maped to their related handler.
 - main: called initDb and initaliseHandlers functions and create router.
+
+# Preparing GitLab CI/CD
+&ensp;I just write some bash scripts, define all the automated tasks in a .gitlab-ci.yml file in the root of the repo, and with a few more small configuration steps.Three stages are defined in the CI/CD :\
+&ensp;&ensp;&ensp;test: it is an simple automated testing of the Golang code.\
+&ensp;&ensp;&ensp;build: just build the docker image and push it to dockerhub.\
+&ensp;&ensp;&ensp;deploy:  releasing an app to production.
 
