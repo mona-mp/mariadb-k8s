@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "maxscale2.fullname" . }}
+  labels:
+    {{- include "maxscale2.labels" . | nindent 4 }}
+spec:
+  ports:
+    - name: mariadb
+      port: {{ .Values.service.mariadbport }}
+    - name: maxscale
+      port: {{ .Values.service.restapiport }}    
+  selector:
+    {{- include "maxscale2.selectorLabels" . | nindent 4 }}

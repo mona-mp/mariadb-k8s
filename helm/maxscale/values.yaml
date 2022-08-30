@@ -1,0 +1,16 @@
+
+replicaCount: 1
+
+image:
+  repository: mariadb/maxscale
+  pullPolicy: IfNotPresent
+  tag: "22.08.0"
+
+nameOverride: ""
+fullnameOverride: ""
+
+
+service:
+  mariadbport: 3306
+  restapiport: 8989  
+
