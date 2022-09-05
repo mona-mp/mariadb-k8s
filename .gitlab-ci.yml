@@ -1,5 +1,4 @@
 
-
 stages:
   - test
   - build
@@ -19,15 +18,19 @@ build_image:
   before_script:
     - docker login -u "$DOCKERHUB_USER" -p "$DOCKERHUB_PASS"
   script:
-    - docker build -t monamp10/user-management:1.0 .
-    - docker push monamp10/user-management:1.0
+    - docker build -t monamp10/user-management:${CI_PIPELINE_ID} .
+    - docker push monamp10/user-management:${CI_PIPELINE_ID}
 
 deploy:
   stage: deploy
   before_script:
     - chmod 400 $SSH_KEY
   script:
-    - ssh -o StrictHostKeyChecking=no -i $SSH_KEY ubuntu@188.121.109.78 "
-        sudo docker login -u "$DOCKERHUB_USER" -p "$DOCKERHUB_PASS" &&
-        sudo docker rm -f usermanagement &&
-        sudo docker run -d -p 18080:18080 --name usermanagement monamp10/user-management:1.0"
+  #  - ssh -o StrictHostKeyChecking=no -i $SSH_KEY ubuntu@188.121.109.78 "
+  #      sudo docker login -u "$DOCKERHUB_USER" -p "$DOCKERHUB_PASS" &&
+  #      sudo docker rm -f usermanagement &&
+  #      sudo docker run -d -p 18080:18080 --name usermanagement monamp10/user-management:${CI_PIPELINE_ID}"
+    - ssh -o StrictHostKeyChecking=no -i $SSH_KEY root@37.32.27.242 "
+        helm repo add maxscale https://mona-mp.github.io/maxscale-helmchart-repo &&
+        helm upgrade -i  maxscale https://mona-mp.github.io/maxscale-helmchart-repo/maxscale-0.2.0.tgz  --namespace=mariadb &&
+        helm upgrade -i api https://mona-mp.github.io/usermanagement-api-helmchart-repo/api-0.1.0.tgz --namespace=mariadb --set image.tag=${CI_PIPELINE_ID} "
