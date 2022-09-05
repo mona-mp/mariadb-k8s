@@ -1,7 +1,7 @@
 # Deploy with helm chart
 
 
-In this project, first, I deploy the MariaDB cluster with a helmchart. Second, create a helm chart for maxscale to use for the master/slave MariaDB cluster, and at the end, make a helm chart to deploy the phonebook app and write GitLab CI/CD for it.
+In this project, first, I deploy the MariaDB cluster with a helmchart. Second, create a helm chart for maxscale to use for the master/slave MariaDB cluster, and at the end, make a helm chart to deploy the usermanagement app and create GitLab CI/CD for it.
 
 
 
