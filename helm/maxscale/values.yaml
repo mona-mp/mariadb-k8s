@@ -4,7 +4,7 @@ replicaCount: 1
 image:
   repository: mariadb/maxscale
   pullPolicy: IfNotPresent
-  tag: "22.08.0"
+  tag: "6.3.1"
 
 nameOverride: ""
 fullnameOverride: ""
