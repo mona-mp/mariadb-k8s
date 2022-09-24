@@ -22,15 +22,21 @@ build_image:
     - docker push monamp10/user-management:${CI_PIPELINE_ID}
 
 deploy:
+  image: dtzar/helm-kubectl:3.0.3
   stage: deploy
   before_script:
     - chmod 400 $SSH_KEY
   script:
+    - mkdir -p ~/.kube
+    - chmod 700 ~/.kube
+    - echo "$KUBECONFIG_MONA" > ~/.kube/config
+     
   #  - ssh -o StrictHostKeyChecking=no -i $SSH_KEY ubuntu@188.121.109.78 "
   #      sudo docker login -u "$DOCKERHUB_USER" -p "$DOCKERHUB_PASS" &&
   #      sudo docker rm -f usermanagement &&
   #      sudo docker run -d -p 18080:18080 --name usermanagement monamp10/user-management:${CI_PIPELINE_ID}"
-    - ssh -o StrictHostKeyChecking=no -i $SSH_KEY root@37.32.27.242 "
-        helm repo add maxscale https://mona-mp.github.io/maxscale-helmchart-repo &&
-        helm upgrade -i  maxscale https://mona-mp.github.io/maxscale-helmchart-repo/maxscale-0.2.0.tgz  --namespace=mariadb &&
-        helm upgrade -i api https://mona-mp.github.io/usermanagement-api-helmchart-repo/api-0.1.0.tgz --namespace=mariadb --set image.tag=${CI_PIPELINE_ID} "
+  #  - ssh -o StrictHostKeyChecking=no -i $SSH_KEY root@37.32.27.242 "
+    - helm repo add maxscale https://mona-mp.github.io/maxscale-helmchart-repo 
+    - helm upgrade -i  maxscale https://mona-mp.github.io/maxscale-helmchart-repo/maxscale-0.2.0.tgz  -f helm/maxscale/values.yaml --namespace=mariadb 
+    - helm upgrade -i api https://mona-mp.github.io/usermanagement-api-helmchart-repo/api-0.1.0.tgz -f helm/api/values.yaml --namespace=mariadb --set image.tag=${CI_PIPELINE_ID} --set imagePullSecrets="{regcred,$DOCKERHUB_USER,$DOCKERHUB_PASS,https://index.docker.io/v1/}" --set imageCredentials.password=$DOCKERHUB_PASS
+
