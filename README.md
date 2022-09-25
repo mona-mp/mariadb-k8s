@@ -1,4 +1,4 @@
-# User management RESTful API
+# Mariadb-cluster
 <p align="center">
     <img src="usermanagement-diagram.png">
     </p>
